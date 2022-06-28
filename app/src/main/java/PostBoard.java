@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 
 public class PostBoard {
+
   private JFrame frame;
   private JTextField textField;
   private JPanel contentPanel;
@@ -33,37 +34,34 @@ public class PostBoard {
 
 
     mainPage.add((createWritePage()));
+  }
+    public void mainPage() {
+      mainPage = new JPanel();
+      frame.add(mainPage, BorderLayout.PAGE_START);
 
-  public void mainPage() {
-     mainPage = new JPanel();
-    frame.add(mainPage , BorderLayout.PAGE_START);
-
-    mainPage.add(createWritePage());
-
-
-
-
-
+      mainPage.add(createWritePage());
   }
 
-  public JButton createWritePage() {
-    JButton button = new JButton("글쓰기");
 
-    button.addActionListener(event -> {
-      WriteFrameGenerator writeFrameGenerator = new WriteFrameGenerator(mainPage);
 
-    button.addActionListener(event ->{
-      WriteFrameGenerator writeFrameGenerator = new WriteFrameGenerator();
 
-      contentPanel.add(writeFrameGenerator);
-      frame.setVisible(true);
-    });
+    public JButton createWritePage() {
+      JButton button = new JButton("글쓰기");
 
-    return button;
-  }
+      button.addActionListener(event -> {
+        WriteFrameGenerator writeFrameGenerator = new WriteFrameGenerator(mainPage);
 
-  public void initContentPanel() {
-    contentPanel = new JPanel();
-    frame.add(contentPanel);
-  }
-}
+          contentPanel.add(writeFrameGenerator);
+          frame.setVisible(true);
+        });
+
+        return button;
+      }
+
+
+      public void initContentPanel() {
+        contentPanel = new JPanel();
+        frame.add(contentPanel);
+      }
+    }
+
