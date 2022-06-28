@@ -1,4 +1,4 @@
-import models.TasksPanel;
+import utils.WriteFrameGenerator;
 
 import javax.swing.*;
 import java.awt.*;
@@ -7,7 +7,7 @@ public class PostBoard {
   private JFrame frame;
   private JTextField textField;
   private JPanel contentPanel;
-
+  private JPanel mainPage;
   public static void main(String[] args) {
     PostBoard application = new PostBoard();
     application.run();
@@ -26,23 +26,21 @@ public class PostBoard {
   }
 
   public void mainPage() {
-    JPanel panel = new JPanel();
-    frame.add(panel, BorderLayout.PAGE_START);
+     mainPage = new JPanel();
+    frame.add(mainPage , BorderLayout.PAGE_START);
 
-    textField = new JTextField(10);
+    mainPage.add(createWritePage());
 
-    panel.add(textField);
-    panel.add(createTask());
 
 
 
   }
 
-  public JButton createTask() {
-    JButton button = new JButton("create");
-    button.addActionListener(event -> {
-      TasksPanel tasksPanel = new TasksPanel(textField);
-      contentPanel.add(tasksPanel);
+  public JButton createWritePage() {
+    JButton button = new JButton("글쓰기");
+    button.addActionListener(event ->{
+      WriteFrameGenerator writeFrameGenerator = new WriteFrameGenerator();
+      contentPanel.add(writeFrameGenerator);
       frame.setVisible(true);
     });
 
