@@ -26,6 +26,7 @@ public class PostBoard {
     frame.setVisible(true);
   }
 
+
   public void initMainPage() {
     mainPage = new JPanel();
     frame.add(mainPage, BorderLayout.PAGE_START);
@@ -33,14 +34,27 @@ public class PostBoard {
 
     mainPage.add((createWritePage()));
 
+  public void mainPage() {
+     mainPage = new JPanel();
+    frame.add(mainPage , BorderLayout.PAGE_START);
+
+    mainPage.add(createWritePage());
+
+
+
 
 
   }
 
   public JButton createWritePage() {
     JButton button = new JButton("글쓰기");
+
     button.addActionListener(event -> {
       WriteFrameGenerator writeFrameGenerator = new WriteFrameGenerator(mainPage);
+
+    button.addActionListener(event ->{
+      WriteFrameGenerator writeFrameGenerator = new WriteFrameGenerator();
+
       contentPanel.add(writeFrameGenerator);
       frame.setVisible(true);
     });
