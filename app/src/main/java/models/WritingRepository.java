@@ -9,20 +9,36 @@ public class WritingRepository extends JPanel {
   private List<String> postTitle = new ArrayList<>();
   private List<String> postContent = new ArrayList<>();
 
+  public String getPostTitleKey(String post) {
+    return null;
+  }
+
   public void addWrite(String titleText) {
 
     this.postTitle.add(titleText);
 
-  }
-  public List<String> getPostTitle() {
-    return postTitle;
   }
 
   public void addContent(String contentText) {
     postContent.add(contentText);
   }
 
-  public List<String> getPostContent() {
+  public String getPostTitle(int i) {
+
+    return postTitle.get(i);
+  }
+
+  public String getPostContent(int i){
+    return postContent.get(i);
+  }
+
+
+  public List<String> getPostTitleList() {
+
+    return postTitle;
+  }
+
+  public List<String> getPostContentList() {
     return postContent;
   }
 }

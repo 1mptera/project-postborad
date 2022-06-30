@@ -30,6 +30,7 @@ public class WriteFrameGenerator extends JPanel {
 
     JTextArea content = new JTextArea();
     content.setBounds(50, 50, 600, 550);
+    content.setLineWrap(true);
     panel.add(content);
 
     JButton register = new JButton("등록");
