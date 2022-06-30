@@ -6,13 +6,15 @@ import javax.swing.*;
 
 public class WriteFrameGenerator extends JPanel {
 
+  private final PostPagePanel postPagePanel;
+  private final JPanel contentPanel;
   private  JLabel label;
-  private WritingRepository writing ;
+  private WritingRepository writingRepository ;
 
-  public WriteFrameGenerator(WritingRepository writing, JPanel mainPage) {
-    this.writing = writing;
-
-
+  public WriteFrameGenerator(WritingRepository writingRepository, PostPagePanel postPagePanel, JPanel contentPanel) {
+    this.writingRepository = writingRepository;
+    this.postPagePanel = postPagePanel;
+    this.contentPanel = contentPanel;
 
     JFrame writeFrame = new JFrame("글쓰기");
     writeFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -33,11 +35,19 @@ public class WriteFrameGenerator extends JPanel {
     JButton register = new JButton("등록");
     register.addActionListener(event -> {
       String titleText = title.getText();
-      writing.addWrite(titleText);
+      writingRepository.addWrite(titleText);
 
       String contentText = content.getText();
-      writing.addContent(contentText);
-      setVisible(false);
+      writingRepository.addContent(contentText);
+
+      postPagePanel.removeAll();
+
+      postPagePanel.postTitleLabel(writingRepository);
+
+      contentPanel.setVisible(false);
+      contentPanel.setVisible(true);
+
+      writeFrame.setVisible(false);
 
     });
     register.setBounds(550, 605, 100, 50);
