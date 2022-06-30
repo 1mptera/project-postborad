@@ -1,4 +1,5 @@
 import models.WritingRepository;
+import utils.PostPagePanel;
 import utils.WriteFrameGenerator;
 
 import javax.swing.*;
@@ -8,8 +9,9 @@ public class PostBoard {
 
   private JFrame frame;
   private JPanel contentPanel;
-  private JPanel mainPage;
+
   private WritingRepository writing;
+  private PostPagePanel postPagePanel;
 
   public static void main(String[] args) {
     PostBoard application = new PostBoard();
@@ -24,18 +26,18 @@ public class PostBoard {
     frame.setLocation(700, 0);
     initMainPage();
     initContentPanel();
-
+    postPagePanel = new PostPagePanel(writing, contentPanel);
 
     frame.setVisible(true);
   }
 
 
   public void initMainPage() {
-    mainPage = new JPanel();
-    frame.add(mainPage, BorderLayout.PAGE_START);
+    JPanel panel = new JPanel();
+    frame.add(panel, BorderLayout.PAGE_START);
 
 
-    mainPage.add((createWritePage()));
+    panel.add((createWritePage()));
   }
 
 
@@ -43,15 +45,8 @@ public class PostBoard {
     JButton button = new JButton("글쓰기");
 
     button.addActionListener(event -> {
-      WriteFrameGenerator writeFrameGenerator = new WriteFrameGenerator(writing , mainPage);
-      showContentPanel(writeFrameGenerator);
-//      mainPage.add(button);
-//
-//      for (String title : writing.getPostTitle()) {
-//        JLabel titleLabel = new JLabel(title);
-//        mainPage.add(titleLabel);
-//      }
-//      frame.setVisible(true);
+      WriteFrameGenerator writeFrameGenerator = new WriteFrameGenerator(writing,postPagePanel,contentPanel);
+      showContentPanel(postPagePanel);
     });
 
     return button;
