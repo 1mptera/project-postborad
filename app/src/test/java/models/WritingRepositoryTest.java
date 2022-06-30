@@ -11,7 +11,7 @@ class WritingRepositoryTest {
 
     writingRepository.addWrite("2");
     writingRepository.addWrite("1");
-    assertEquals(2 , writingRepository.getPostTitle().size());
+    assertEquals(2 , writingRepository.getPostTitle(i).size());
   }
 
 
