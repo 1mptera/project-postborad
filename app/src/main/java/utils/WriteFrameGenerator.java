@@ -8,7 +8,6 @@ public class WriteFrameGenerator extends JPanel {
 
   private final PostPagePanel postPagePanel;
   private final JPanel contentPanel;
-  private  JLabel label;
   private WritingRepository writingRepository ;
 
   public WriteFrameGenerator(WritingRepository writingRepository, PostPagePanel postPagePanel, JPanel contentPanel) {
@@ -43,7 +42,7 @@ public class WriteFrameGenerator extends JPanel {
 
       postPagePanel.removeAll();
 
-      postPagePanel.postTitleLabel(writingRepository);
+      postPagePanel.postTitleLabel(writingRepository , postPagePanel);
 
       contentPanel.setVisible(false);
       contentPanel.setVisible(true);

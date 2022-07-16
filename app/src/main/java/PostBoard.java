@@ -38,6 +38,7 @@ public class PostBoard {
 
 
     panel.add((createWritePage()));
+
   }
 
 
@@ -51,7 +52,6 @@ public class PostBoard {
 
     return button;
   }
-
 
   public void initContentPanel() {
     contentPanel = new JPanel();

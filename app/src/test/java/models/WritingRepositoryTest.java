@@ -11,9 +11,16 @@ class WritingRepositoryTest {
 
     writingRepository.addWrite("2");
     writingRepository.addWrite("1");
-    assertEquals(2 , writingRepository.getPostTitle(i).size());
+    assertEquals(2 , writingRepository.getPostTitleList().size());
   }
+  @Test
+  void addcontent() {
+    WritingRepository writingRepository = new WritingRepository();
 
+    writingRepository.addContent("2");
+    writingRepository.addContent("1");
+    assertEquals(2 , writingRepository.getPostContentList().size());
+  }
 
 
 
